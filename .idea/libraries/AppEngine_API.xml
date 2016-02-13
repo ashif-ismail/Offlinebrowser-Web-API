@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="AppEngine API">
+    <CLASSES>
+      <root url="file://$USER_HOME$/ashif/appengine-java/lib/user" />
+      <root url="file://$USER_HOME$/ashif/appengine-java/lib/opt/user/appengine-endpoints/v1" />
+      <root url="file://$USER_HOME$/ashif/appengine-java/lib/opt/user/jsr107/v1" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$USER_HOME$/ashif/appengine-java/lib/opt/user/appengine-endpoints/v1" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/ashif/appengine-java/lib/opt/user/jsr107/v1" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/ashif/appengine-java/lib/user" recursive="false" />
+  </library>
+</component>

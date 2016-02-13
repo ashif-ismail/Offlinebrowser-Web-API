@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_offlinebrowser-web" default="compile.module.offlinebrowser-web">
+  <dirname property="module.offlinebrowser-web.basedir" file="${ant.file.module_offlinebrowser-web}"/>
+  
+  <property name="module.jdk.home.offlinebrowser-web" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.offlinebrowser-web" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.offlinebrowser-web" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.offlinebrowser-web" value="-encoding UTF-8 -source 1.7 -target 1.7 ${compiler.args}"/>
+  
+  <property name="offlinebrowser-web.output.dir" value="${module.offlinebrowser-web.basedir}/out/production/boilerpipetest"/>
+  <property name="offlinebrowser-web.testoutput.dir" value="${module.offlinebrowser-web.basedir}/out/test/boilerpipetest"/>
+  
+  <path id="offlinebrowser-web.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="offlinebrowser-web.module.production.classpath">
+    <path refid="${module.jdk.classpath.offlinebrowser-web}"/>
+    <path refid="library.tomcat_7.0.67.classpath"/>
+    <path refid="library.boilerpipe-1.2.0.classpath"/>
+    <path refid="library.nekohtml-1.9.17.classpath"/>
+    <path refid="library.xerces-2_6_2.classpath"/>
+    <pathelement location="${basedir}/../../Documents/boilerpipe-1.2.0.jar"/>
+  </path>
+  
+  <path id="offlinebrowser-web.runtime.production.module.classpath">
+    <pathelement location="${offlinebrowser-web.output.dir}"/>
+    <path refid="library.boilerpipe-1.2.0.classpath"/>
+    <path refid="library.nekohtml-1.9.17.classpath"/>
+    <path refid="library.xerces-2_6_2.classpath"/>
+    <pathelement location="${basedir}/../../Documents/boilerpipe-1.2.0.jar"/>
+  </path>
+  
+  <path id="offlinebrowser-web.module.classpath">
+    <path refid="${module.jdk.classpath.offlinebrowser-web}"/>
+    <pathelement location="${offlinebrowser-web.output.dir}"/>
+    <path refid="library.tomcat_7.0.67.classpath"/>
+    <path refid="library.boilerpipe-1.2.0.classpath"/>
+    <path refid="library.nekohtml-1.9.17.classpath"/>
+    <path refid="library.xerces-2_6_2.classpath"/>
+    <pathelement location="${basedir}/../../Documents/boilerpipe-1.2.0.jar"/>
+  </path>
+  
+  <path id="offlinebrowser-web.runtime.module.classpath">
+    <pathelement location="${offlinebrowser-web.testoutput.dir}"/>
+    <pathelement location="${offlinebrowser-web.output.dir}"/>
+    <path refid="library.tomcat_7.0.67.classpath"/>
+    <path refid="library.boilerpipe-1.2.0.classpath"/>
+    <path refid="library.nekohtml-1.9.17.classpath"/>
+    <path refid="library.xerces-2_6_2.classpath"/>
+    <pathelement location="${basedir}/../../Documents/boilerpipe-1.2.0.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.offlinebrowser-web">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.offlinebrowser-web">
+    <patternset refid="excluded.from.module.offlinebrowser-web"/>
+  </patternset>
+  
+  <path id="offlinebrowser-web.module.sourcepath">
+    <dirset dir="${module.offlinebrowser-web.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.offlinebrowser-web" depends="compile.module.offlinebrowser-web.production,compile.module.offlinebrowser-web.tests" description="Compile module offlinebrowser-web"/>
+  
+  <target name="compile.module.offlinebrowser-web.production" depends="register.custom.compilers" description="Compile module offlinebrowser-web; production classes">
+    <mkdir dir="${offlinebrowser-web.output.dir}"/>
+    <javac2 destdir="${offlinebrowser-web.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.offlinebrowser-web}/javac">
+      <compilerarg line="${compiler.args.offlinebrowser-web}"/>
+      <bootclasspath refid="offlinebrowser-web.module.bootclasspath"/>
+      <classpath refid="offlinebrowser-web.module.production.classpath"/>
+      <src refid="offlinebrowser-web.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.offlinebrowser-web"/>
+    </javac2>
+    
+    <copy todir="${offlinebrowser-web.output.dir}">
+      <fileset dir="${module.offlinebrowser-web.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.offlinebrowser-web.tests" depends="register.custom.compilers,compile.module.offlinebrowser-web.production" description="compile module offlinebrowser-web; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.offlinebrowser-web" description="cleanup module">
+    <delete dir="${offlinebrowser-web.output.dir}"/>
+    <delete dir="${offlinebrowser-web.testoutput.dir}"/>
+  </target>
+</project>

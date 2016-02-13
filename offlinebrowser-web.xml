@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="offlinebrowser-web" default="all">
+  
+  
+  <property file="offlinebrowser-web.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.7" value="${jdk.home.1.7}/bin"/>
+  <path id="jdk.classpath.1.7">
+    <fileset dir="${jdk.home.1.7}">
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/charsets.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/compilefontconfig.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/dnsns.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/icedtea-sound.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/java-atk-wrapper.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/localedata.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/sunjce_provider.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/sunpkcs11.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/zipfs.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/javazic.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/jce.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/jsse.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/management-agent.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/resources.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/rhino.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.7}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.7}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.7"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.boilerpipe-1.2.0.classpath">
+    <pathelement location="${basedir}/../../Documents/boilerpipe-1.2.0.jar"/>
+  </path>
+  
+  <path id="library.nekohtml-1.9.17.classpath">
+    <pathelement location="${basedir}/../../Documents/nekohtml-1.9.17.jar"/>
+  </path>
+  
+  <path id="library.xerces-2_6_2.classpath">
+    <pathelement location="${basedir}/../../Documents/xerces-2_6_2.jar"/>
+  </path>
+  
+  
+  <!-- Global Libraries -->
+  
+  <path id="library.boilerpipe-1.2.0.classpath">
+    <pathelement location="/home/almukthar/Documents/boilerpipe-1.2.0.jar"/>
+  </path>
+  
+  <path id="library.nekohtml-1.9.17.classpath">
+    <pathelement location="/home/almukthar/Documents/nekohtml-1.9.17.jar"/>
+  </path>
+  
+  <path id="library.xerces-2_6_2.classpath">
+    <pathelement location="/home/almukthar/Documents/xerces-2_6_2.jar"/>
+  </path>
+  
+  
+  <!-- Application Server Libraries -->
+  
+  <path id="library.tomcat_7.0.67.classpath">
+    <pathelement location="/home/almukthar/Downloads/apache-tomcat-7.0.67/lib/jsp-api.jar"/>
+    <pathelement location="/home/almukthar/Downloads/apache-tomcat-7.0.67/lib/servlet-api.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/module_offlinebrowser-web.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.offlinebrowser-web, clean.artifact.offlinebrowser-web:war_exploded" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.offlinebrowser-web" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.offlinebrowser-web:war_exploded" value="${basedir}/out/artifacts/offlinebrowser_web_war_exploded"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="clean.artifact.offlinebrowser-web:war_exploded" description="clean offlinebrowser-web:war exploded artifact output">
+    <delete dir="${artifact.output.offlinebrowser-web:war_exploded}"/>
+  </target>
+  
+  <target name="artifact.offlinebrowser-web:war_exploded" depends="init.artifacts, compile.module.offlinebrowser-web" description="Build &#39;offlinebrowser-web:war exploded&#39; artifact">
+    <mkdir dir="${artifact.output.offlinebrowser-web:war_exploded}"/>
+    <copy todir="${artifact.output.offlinebrowser-web:war_exploded}">
+      <fileset dir="${basedir}/web"/>
+    </copy>
+    <mkdir dir="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF"/>
+    <copy file="${basedir}/web/WEB-INF/web.xml" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/web.xml"/>
+    <mkdir dir="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF"/>
+    <mkdir dir="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/classes"/>
+    <copy todir="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/classes">
+      <fileset dir="${offlinebrowser-web.output.dir}"/>
+    </copy>
+    <mkdir dir="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib"/>
+    <copy file="${basedir}/../../ashif/appengine-java/lib/user/libservice.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/libservice.jar"/>
+    <copy file="${basedir}/../../ashif/appengine-java/lib/user/jsr107cache-1.1.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/jsr107cache-1.1.jar"/>
+    <copy file="${basedir}/../../ashif/appengine-java/lib/user/appengine-api-labs-1.9.32.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/appengine-api-labs-1.9.32.jar"/>
+    <copy file="${basedir}/../../ashif/appengine-java/lib/user/appengine-api-1.0-sdk-1.9.32.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/appengine-api-1.0-sdk-1.9.32.jar"/>
+    <copy file="${basedir}/../../ashif/appengine-java/lib/user/appengine-jsr107cache-1.9.32.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/appengine-jsr107cache-1.9.32.jar"/>
+    <copy file="${basedir}/../../ashif/appengine-java/lib/opt/user/appengine-endpoints/v1/appengine-endpoints.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/appengine-endpoints.jar"/>
+    <copy file="${basedir}/../../ashif/appengine-java/lib/opt/user/appengine-endpoints/v1/appengine-endpoints-deps.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/appengine-endpoints-deps.jar"/>
+    <copy file="${basedir}/../../ashif/appengine-java/lib/opt/user/jsr107/v1/jsr107cache-1.1.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/jsr107cache-1.1.jar"/>
+    <copy file="${basedir}/../../ashif/appengine-java/lib/opt/user/jsr107/v1/appengine-jsr107cache-1.9.32.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/appengine-jsr107cache-1.9.32.jar"/>
+    <copy file="${basedir}/../../ashif/appengine-java/lib/user/orm/jdo2-api-2.3-eb.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/jdo2-api-2.3-eb.jar"/>
+    <copy file="${basedir}/../../ashif/appengine-java/lib/user/orm/datanucleus-jpa-1.1.5.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/datanucleus-jpa-1.1.5.jar"/>
+    <copy file="${basedir}/../../ashif/appengine-java/lib/user/orm/datanucleus-core-1.1.5.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/datanucleus-core-1.1.5.jar"/>
+    <copy file="${basedir}/../../ashif/appengine-java/lib/user/orm/geronimo-jpa_3.0_spec-1.1.1.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/geronimo-jpa_3.0_spec-1.1.1.jar"/>
+    <copy file="${basedir}/../../ashif/appengine-java/lib/user/orm/geronimo-jta_1.1_spec-1.1.1.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/geronimo-jta_1.1_spec-1.1.1.jar"/>
+    <copy file="${basedir}/../../ashif/appengine-java/lib/user/orm/datanucleus-appengine-1.0.10.final.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/datanucleus-appengine-1.0.10.final.jar"/>
+    <copy file="${basedir}/../../Documents/boilerpipe-1.2.0.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/boilerpipe-1.2.0.jar"/>
+    <copy file="${basedir}/../../Documents/nekohtml-1.9.17.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/nekohtml-1.9.17.jar"/>
+    <copy file="${basedir}/../../Documents/xerces-2_6_2.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/xerces-2_6_2.jar"/>
+    <copy file="${basedir}/../../Documents/boilerpipe-1.2.0.jar" tofile="${artifact.output.offlinebrowser-web:war_exploded}/WEB-INF/lib/boilerpipe-1.2.0.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.offlinebrowser-web:war_exploded" description="Build all artifacts">
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

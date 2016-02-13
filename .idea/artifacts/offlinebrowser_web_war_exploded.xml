@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="offlinebrowser-web:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/offlinebrowser_web_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="offlinebrowser-web/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="offlinebrowser-web" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="AppEngine API" />
+          <element id="library" level="project" name="AppEngine ORM" />
+          <element id="library" level="application" name="boilerpipe-1.2.0" />
+          <element id="library" level="application" name="nekohtml-1.9.17" />
+          <element id="library" level="application" name="xerces-2_6_2" />
+          <element id="file-copy" path="$USER_HOME$/Documents/boilerpipe-1.2.0.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
