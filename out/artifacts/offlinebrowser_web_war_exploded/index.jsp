@@ -25,6 +25,7 @@
   <select name="OutputType" class="div-inline">
     <option value="1">Plain Text</option>
     <option value="2">HTML</option>
+    <option value="3">JSON</option>
   </select>
   <select name="ExtractorType" class="div-inline">
     <option value="1">Article Extractor</option>
@@ -47,5 +48,8 @@
 </style>
 <div class="navbar navbar-fixed-bottom">
 <p>This Project Is Developed Under the Guidance of <strong>Dr.Antony P.J</strong>(Co-ordinator of PG Studies,KVGCE) by <strong>Abdul Ashif</strong> and <strong>Rohan D'Souza</strong></p>
+</div>
+<div id="below_footer">
+  <p></p>
 </div>
 </html>
