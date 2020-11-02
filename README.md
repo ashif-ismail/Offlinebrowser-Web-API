@@ -9,6 +9,3 @@ this project can be used freely with no quota limits..
 
 try the demo at http://offlinebrowser-web.appspot.com/
 
-
-[![Ashif's github stats](https://github-readme-stats.vercel.app/api?username=SheikhZayed)](https://github.com/anuraghazra/github-readme-stats)
-
